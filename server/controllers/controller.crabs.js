@@ -3,17 +3,17 @@ const Crab = require('../models/model.crabs');
 module.exports = {
     index: (request, response) => {
         Crab.find()
-            .then(data => response.json({ results: data }))
+            .then(crabs => response.json({ results: crabs }))
             .catch(err => response.json(err.errors));
     },
     create: (request, response) => {
         Crab.create(request.body)
-            .then(data => response.json({ results: data }))
+            .then(crab => response.json({ results: crab }))
             .catch(err => response.json(err.errors))
     },
     show: (request, response) => {
         Crab.findOne({ _id: request.params.id })
-            .then(data => response.json({ results: data }))
+            .then(crab => response.json({ results: crab }))
             .catch(err => response.json(err.errors))
     },
     update: (request, response) => {
@@ -22,7 +22,7 @@ module.exports = {
             runValidators: true,
             new: true
         })
-            .then(data => response.json({ results: data }))
+            .then(crab => response.json({ results: crab }))
             .catch(err => response.json(err.errors))
     },
     destroy: (request, response) => {
